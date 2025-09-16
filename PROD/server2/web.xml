@@ -1,0 +1,19 @@
+<web-app>
+    <display-name>EDM Application PROD</display-name>
+    <context-param>
+        <param-name>timeout</param-name>
+        <param-value>350</param-value>
+    </context-param>
+    <context-param>
+        <param-name>maxConnections</param-name>
+        <param-value>80</param-value>
+    </context-param>
+    <context-param>
+        <param-name>enableLogging</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>sessionExpiry</param-name>
+        <param-value>500</param-value>
+    </context-param>
+</web-app>

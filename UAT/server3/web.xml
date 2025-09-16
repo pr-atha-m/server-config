@@ -1,0 +1,19 @@
+<web-app>
+    <display-name>EDM Application UAT</display-name>
+    <context-param>
+        <param-name>timeout</param-name>
+        <param-value>400</param-value>
+    </context-param>
+    <context-param>
+        <param-name>maxConnections</param-name>
+        <param-value>60</param-value>
+    </context-param>
+    <context-param>
+        <param-name>enableLogging</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>sessionExpiry</param-name>
+        <param-value>400</param-value>
+    </context-param>
+</web-app>
