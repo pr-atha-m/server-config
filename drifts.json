@@ -1,0 +1,96 @@
+{
+  "request": {
+    "app_id": "ecommerce_app",
+    "server_id": "server1", 
+    "file_name": "application.properties",
+    "env": "prod"
+  },
+  "analysis_timestamp": "2025-09-18T23:57:01.123456",
+  "file_name": "application.properties",
+  "drifts": {
+    "file_drift": {
+      "drift_type": "file_drift",
+      "has_drift": false,
+      "status": "no_drift",
+      "severity": "low",
+      "details": {
+        "missing_files": [],
+        "added_files": [],
+        "total_baseline_files": 5,
+        "total_current_files": 5
+      }
+    },
+    "content_drift": {
+      "drift_type": "content_drift", 
+      "has_drift": true,
+      "status": "drift_detected",
+      "severity": "medium",
+      "details": {
+        "changed_lines": 3,
+        "total_lines": 45,
+        "changes": [
+          {
+            "line": 12,
+            "baseline": "server.port=8080",
+            "current": "server.port=8081"
+          },
+          {
+            "line": 25,
+            "baseline": "database.url=jdbc:mysql://localhost:3306/prod",
+            "current": "database.url=jdbc:mysql://db-server:3306/prod"
+          }
+        ]
+      }
+    },
+    "semantic_drift": {
+      "drift_type": "semantic_drift",
+      "has_drift": true, 
+      "status": "drift_detected",
+      "severity": "high",
+      "details": {
+        "similarity_score": 0.65,
+        "explanation": "Configuration changes indicate a significant shift in database connectivity and port configuration that may impact application behavior.",
+        "confidence": 0.87,
+        "provider": "groq"
+      }
+    }
+  },
+  "summary": {
+    "has_any_drift": true,
+    "total_drift_types": 2,
+    "highest_severity": "high",
+    "overall_severity": "high",
+    "drift_types_detected": ["content_drift", "semantic_drift"]
+  },
+  "recommendations": [
+    "HIGH PRIORITY: Review semantic changes in application.properties - significant configuration drift detected",
+    "Validate database connectivity changes before deployment",
+    "Consider updating documentation to reflect port changes",
+    "Test application startup with new configuration values"
+  ],
+  "data_sources": {
+    "baseline": "found",
+    "current_parsed": "found", 
+    "current_snapshot": "found",
+    "cross_environment": "missing"
+  },
+  "success": true,
+  "llm_validations": {
+    "content_drift": {
+      "is_problematic": true,
+      "severity_adjustment": "high",
+      "confidence": 0.92,
+      "reasoning": "Database URL and port changes are critical infrastructure modifications that require careful validation",
+      "recommendations": [
+        "Verify database connectivity before deployment",
+        "Update load balancer configuration for new port"
+      ]
+    }
+  },
+  "snapshot_context": {
+    "application_type": "spring_boot",
+    "environment": "prod",
+    "total_comments": 8,
+    "configuration_categories": ["server", "database", "logging", "security"]
+  }
+}
